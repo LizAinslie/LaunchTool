@@ -5,6 +5,10 @@ import java.io.File
 actual class AppData actual constructor(
     actual val folderName: String
 ) {
+    init {
+        _instance = this
+    }
+
     actual fun getAppData(): FileDescriptor = when (OS.current()) {
         OS.WINDOWS -> windows()
         OS.MAC -> mac()
@@ -32,8 +36,8 @@ actual class AppData actual constructor(
         return appDataFolder
     }
 
-
     actual companion object {
-        actual val instance = AppData(dataFolderName)
+        actual var _instance: AppData? = null
+        actual fun getInstance(): AppData = _instance!!
     }
 }

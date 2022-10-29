@@ -9,7 +9,9 @@ expect class AppData(
     fun mac(): FileDescriptor
 
     companion object {
-        val instance: AppData
+        var _instance: AppData?
+
+        fun getInstance(): AppData
     }
 
     val folderName: String
