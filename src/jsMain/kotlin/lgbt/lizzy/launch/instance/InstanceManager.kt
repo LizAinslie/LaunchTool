@@ -1,6 +1,10 @@
 package lgbt.lizzy.launch.instance
 
-actual object InstanceManager {
+import lgbt.lizzy.launch.util.AppData
+
+actual class InstanceManager actual constructor(
+    actual val appData: AppData
+) {
     actual fun getAllInstances(): List<MinecraftInstance> {
         TODO("Not yet implemented")
     }

@@ -6,9 +6,11 @@ import lgbt.lizzy.launch.util.AppData
 import java.io.File
 import java.nio.charset.Charset
 
-actual object InstanceManager {
+actual class InstanceManager actual constructor(
+    actual val appData: AppData
+) {
     actual fun getAllInstances(): List<MinecraftInstance> =
-        File(AppData.instance.getAppData(), "instances").listFiles()?.map {
+        File(appData.getAppData(), "instances").listFiles()?.map {
             Json.decodeFromString(it.readText(Charset.defaultCharset()))
         } ?: listOf()
 

@@ -8,11 +8,5 @@ expect class AppData(
     fun linux(): FileDescriptor
     fun mac(): FileDescriptor
 
-    companion object {
-        var _instance: AppData?
-
-        fun getInstance(): AppData
-    }
-
     val folderName: String
 }
