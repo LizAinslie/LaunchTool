@@ -1,5 +1,11 @@
 package lgbt.lizzy.launch.util
 
+import require
+import __dirname
+
+val fs = require("fs")
+val path = require("path")
+
 actual class AppData actual constructor(
     actual val folderName: String
 ) {
