@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform") version "1.7.20"
+    kotlin("plugin.serialization") version "1.7.20"
 }
 
 group = "lgbt.lizzy"
@@ -19,16 +20,22 @@ kotlin {
             useJUnitPlatform()
         }
     }
+
     js(BOTH) {
         moduleName = "mc-launch-tool"
         nodejs()
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+
             }
         }
         val jvmMain by getting
