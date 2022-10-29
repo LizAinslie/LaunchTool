@@ -29,4 +29,9 @@ actual class AppData {
             appDataFolder.mkdirs()
         return appDataFolder
     }
+
+
+    actual companion object {
+        actual val instance = AppData()
+    }
 }

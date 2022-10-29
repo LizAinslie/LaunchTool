@@ -5,4 +5,8 @@ expect class AppData {
     fun windows(): FileDescriptor
     fun linux(): FileDescriptor
     fun mac(): FileDescriptor
+
+    companion object {
+        val instance: AppData
+    }
 }

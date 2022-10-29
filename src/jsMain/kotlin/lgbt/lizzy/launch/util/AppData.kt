@@ -16,4 +16,8 @@ actual class AppData {
     actual fun mac(): FileDescriptor {
         TODO("Not yet implemented")
     }
+
+    actual companion object {
+        actual val instance = AppData()
+    }
 }
