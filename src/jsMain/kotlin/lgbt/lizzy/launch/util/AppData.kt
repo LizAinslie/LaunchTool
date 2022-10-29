@@ -1,6 +1,8 @@
 package lgbt.lizzy.launch.util
 
-actual class AppData {
+actual class AppData actual constructor(
+    actual val folderName: String
+) {
     actual fun getAppData(): FileDescriptor {
         TODO("Not yet implemented")
     }
@@ -18,6 +20,6 @@ actual class AppData {
     }
 
     actual companion object {
-        actual val instance = AppData()
+        actual val instance = AppData(dataFolderName)
     }
 }

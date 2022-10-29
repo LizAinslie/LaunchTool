@@ -1,6 +1,8 @@
 package lgbt.lizzy.launch.util
 
-expect class AppData {
+expect class AppData(
+    folderName: String
+) {
     fun getAppData(): FileDescriptor
     fun windows(): FileDescriptor
     fun linux(): FileDescriptor
@@ -9,4 +11,6 @@ expect class AppData {
     companion object {
         val instance: AppData
     }
+
+    val folderName: String
 }

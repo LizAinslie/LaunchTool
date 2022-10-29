@@ -2,7 +2,9 @@ package lgbt.lizzy.launch.util
 
 import java.io.File
 
-actual class AppData {
+actual class AppData actual constructor(
+    actual val folderName: String
+) {
     actual fun getAppData(): FileDescriptor = when (OS.current()) {
         OS.WINDOWS -> windows()
         OS.MAC -> mac()
@@ -10,21 +12,21 @@ actual class AppData {
     }
 
     actual fun windows(): FileDescriptor {
-        val appDataFolder = File(System.getenv("UserProfile"), "AppData${File.pathSeparator}$dataFolderName")
+        val appDataFolder = File(System.getenv("UserProfile"), "AppData${File.pathSeparator}$folderName")
         if (!appDataFolder.exists())
             appDataFolder.mkdirs()
         return appDataFolder
     }
 
     actual fun linux(): FileDescriptor {
-        val appDataFolder = File(System.getenv("HOME"), ".config${File.pathSeparator}$dataFolderName")
+        val appDataFolder = File(System.getenv("HOME"), ".config${File.pathSeparator}$folderName")
         if (!appDataFolder.exists())
             appDataFolder.mkdirs()
         return appDataFolder
     }
 
     actual fun mac(): FileDescriptor {
-        val appDataFolder = File(System.getenv("HOME"), "Library${File.pathSeparator}Application Support${File.pathSeparator}$dataFolderName")
+        val appDataFolder = File(System.getenv("HOME"), "Library${File.pathSeparator}Application Support${File.pathSeparator}$folderName")
         if (!appDataFolder.exists())
             appDataFolder.mkdirs()
         return appDataFolder
@@ -32,6 +34,6 @@ actual class AppData {
 
 
     actual companion object {
-        actual val instance = AppData()
+        actual val instance = AppData(dataFolderName)
     }
 }
