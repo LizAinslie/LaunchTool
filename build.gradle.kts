@@ -23,8 +23,6 @@ kotlin {
         moduleName = "mc-launch-tool"
         nodejs()
     }
-    val hostOs = System.getProperty("os.name")
-    val isMingwX64 = hostOs.startsWith("Windows")
     
     sourceSets {
         val commonMain by getting
